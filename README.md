@@ -20,6 +20,18 @@ For Chainlink VRF v2 to fulfill your requests, you must maintain a sufficient am
 
 ## Useful commands and resources
 
+### Install Chainlink contracts
+
+```sh
+forge install https://github.com/smartcontractkit/chainlink-brownie-contracts
+```
+
+### Install OpenZeppelin contracts
+
+```sh
+forge install openzeppelin/openzeppelin-contracts
+```
+
 [Chainlink VRF Subscription Manager](https://vrf.chain.link/mumbai)
 
 ## Mumbai Transactions and contracts
