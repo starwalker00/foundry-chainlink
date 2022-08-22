@@ -49,3 +49,6 @@ https://mumbai.polygonscan.com/tx/0xd85fa9480d93506b07214d2408b2584794c6f77ad654
 
 Chainlink subscription contract :
 https://mumbai.polygonscan.com/address/0x7a1bac17ccc5b313516c5e16fb24f7659aa5ebed
+
+Add VRF consumer contract :
+https://mumbai.polygonscan.com/tx/0x65651dd80d754980cc06264b66cd771dff31eab5cda3ccb6465370d6f63adfe6
