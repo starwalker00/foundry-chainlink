@@ -5,6 +5,12 @@ import "chainlink-contracts/contracts/src/v0.8/interfaces/VRFCoordinatorV2Interf
 import "openzeppelin-contracts/contracts/access/Ownable.sol";
 
 contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
+    event NumberChanged(
+        address indexed changer,
+        uint256 indexed previousNumber,
+        uint256 indexed currentNumber
+    );
+
     bytes32 public keyHash =
         0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f;
     uint64 public subId = 1533;
@@ -64,10 +70,12 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
     }
 
     function setNumber(uint256 newNumber) public onlyOwner {
+        uint256 previousnumber = number;
         number = newNumber;
+        emit NumberChanged(msg.sender, previousnumber, number);
     }
 
     function increment() public onlyOwner {
-        number++;
+        setNumber(number + 1);
     }
 }

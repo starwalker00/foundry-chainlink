@@ -11,6 +11,11 @@ contract VRFConsumerTest is Test {
     VRFConsumer public vrfConsumer;
     VRFCoordinatorV2Mock public vrfCoordinatorV2Mock;
     LinkTokenInterface public LinkToken;
+    event NumberChanged(
+        address indexed changer,
+        uint256 indexed previousNumber,
+        uint256 indexed currentNumber
+    );
 
     function setUp() public {
         vrfCoordinatorV2Mock = new VRFCoordinatorV2Mock(10, 10);
@@ -41,15 +46,27 @@ contract VRFConsumerTest is Test {
         assertEq(vrfConsumer.number(), 1);
     }
 
+    function testIncrementEvent() public {
+        vm.expectEmit(true, true, false, true);
+        emit NumberChanged(address(this), 0, 1);
+        vrfConsumer.increment();
+    }
+
     function testSetNumber() public {
-        vrfConsumer.setNumber(22);
-        assertEq(vrfConsumer.number(), 22);
+        vrfConsumer.setNumber(1337);
+        assertEq(vrfConsumer.number(), 1337);
+    }
+
+    function testSetNumberEvent() public {
+        vm.expectEmit(true, true, false, true);
+        emit NumberChanged(address(this), 0, 1337);
+        vrfConsumer.setNumber(1337);
     }
 
     function testCannotSetNumberNotOwner() public {
         vm.expectRevert("Ownable: caller is not the owner");
         vm.prank(address(0));
-        vrfConsumer.setNumber(22);
+        vrfConsumer.setNumber(1337);
     }
 
     function testCanGetVRFResponse() public {
