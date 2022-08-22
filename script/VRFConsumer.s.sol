@@ -12,7 +12,12 @@ contract Deploy is Script {
 
         address vrfCoordinator = 0x7a1BaC17Ccc5b313516C5E16fb24f7659aA5ebed;
         uint256 number = 33;
-        VRFConsumer vrfConsumer = new VRFConsumer(vrfCoordinator, number);
+        uint64 subId = 1533;
+        VRFConsumer vrfConsumer = new VRFConsumer(
+            vrfCoordinator,
+            subId,
+            number
+        );
 
         vm.stopBroadcast();
     }

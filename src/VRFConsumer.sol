@@ -24,10 +24,13 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
     /**
      * @param _vrfCoordinator address of VRFCoordinator contract
      */
-    constructor(address _vrfCoordinator, uint256 _number)
-        VRFConsumerBaseV2(_vrfCoordinator)
-    {
+    constructor(
+        address _vrfCoordinator,
+        uint64 _subId,
+        uint256 _number
+    ) VRFConsumerBaseV2(_vrfCoordinator) {
         vrfCoordinator = _vrfCoordinator;
+        subId = _subId;
         number = _number;
     }
 
@@ -48,7 +51,7 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
         number = 222;
     }
 
-    function triggerSetRandomNumberViaVRF() public onlyOwner {
+    function triggerSetRandomNumberViaVRF() public onlyOwner returns (uint256) {
         uint256 requestId = VRFCoordinatorV2Interface(vrfCoordinator)
             .requestRandomWords(
                 keyHash,
@@ -57,6 +60,7 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
                 callbackGasLimit,
                 numWords
             );
+        return requestId;
     }
 
     function setNumber(uint256 newNumber) public onlyOwner {
