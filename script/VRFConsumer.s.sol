@@ -4,7 +4,7 @@ pragma solidity 0.8.15;
 import "forge-std/Script.sol";
 import "../src/VRFConsumer.sol";
 
-address constant liveContractAddress = 0xe7df66774aB7a28e6ED821441a31964F12f91381;
+address constant liveContractAddress = 0xB969BF7f7F80C05aEBfcfc11e484fe0F6302260e;
 
 contract Deploy is Script {
     function setUp() public {}
