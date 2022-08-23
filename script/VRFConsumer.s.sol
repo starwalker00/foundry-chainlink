@@ -4,6 +4,8 @@ pragma solidity 0.8.15;
 import "forge-std/Script.sol";
 import "../src/VRFConsumer.sol";
 
+address constant liveContractAddress = 0xe7df66774aB7a28e6ED821441a31964F12f91381;
+
 contract Deploy is Script {
     function setUp() public {}
 
@@ -28,8 +30,7 @@ contract SetNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
-        VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
+        VRFConsumer vrfConsumer = VRFConsumer(liveContractAddress);
 
         // setNumber
         uint256 previousNumber = vrfConsumer.number();
@@ -48,8 +49,7 @@ contract SetRandomNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
-        VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
+        VRFConsumer vrfConsumer = VRFConsumer(liveContractAddress);
 
         // setNumber
         uint256 previousNumber = vrfConsumer.number();
@@ -67,8 +67,7 @@ contract GetNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
-        VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
+        VRFConsumer vrfConsumer = VRFConsumer(liveContractAddress);
 
         // getNumber
         // while (true) {

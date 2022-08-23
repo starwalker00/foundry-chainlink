@@ -54,7 +54,7 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
         internal
         override
     {
-        number = 222;
+        _setNumber(222);
     }
 
     function triggerSetRandomNumberViaVRF() public onlyOwner returns (uint256) {
@@ -70,12 +70,16 @@ contract VRFConsumer is Ownable, VRFConsumerBaseV2 {
     }
 
     function setNumber(uint256 newNumber) public onlyOwner {
-        uint256 previousnumber = number;
-        number = newNumber;
-        emit NumberChanged(msg.sender, previousnumber, number);
+        _setNumber(newNumber);
     }
 
     function increment() public onlyOwner {
-        setNumber(number + 1);
+        _setNumber(number + 1);
+    }
+
+    function _setNumber(uint256 newNumber) private {
+        uint256 previousnumber = number;
+        number = newNumber;
+        emit NumberChanged(msg.sender, previousnumber, number);
     }
 }
