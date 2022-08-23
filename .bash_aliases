@@ -19,3 +19,10 @@ function getNumber {
 function test {
     forge test --match-contract VRF*
 }
+
+## OTHER
+# https://book.getfoundry.sh/forge/deploying#verifying-a-pre-existing-contract
+function verify {
+    forge verify-contract --chain-id 80001 0xde7B240845e7cd386b79e18bbD7526225243dCCd src/VRFConsumer.sol:VRFConsumer $ETHERSCAN_KEY
+}
+

@@ -28,7 +28,7 @@ contract SetNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0x300689bCde39595Fe49cF9b37E4Ade86BE669506;
+        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
         VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
 
         // setNumber
@@ -48,7 +48,7 @@ contract SetRandomNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0x300689bCde39595Fe49cF9b37E4Ade86BE669506;
+        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
         VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
 
         // setNumber
@@ -67,7 +67,7 @@ contract GetNumber is Script {
         vm.startBroadcast();
 
         // initiate contract interface
-        address counterAddress = 0x300689bCde39595Fe49cF9b37E4Ade86BE669506;
+        address counterAddress = 0xde7B240845e7cd386b79e18bbD7526225243dCCd;
         VRFConsumer vrfConsumer = VRFConsumer(counterAddress);
 
         // getNumber

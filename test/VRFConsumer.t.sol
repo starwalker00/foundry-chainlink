@@ -16,6 +16,16 @@ contract VRFConsumerTest is Test {
         uint256 indexed previousNumber,
         uint256 indexed currentNumber
     );
+    event RandomWordsRequested(
+        bytes32 indexed keyHash,
+        uint256 requestId,
+        uint256 preSeed,
+        uint64 indexed subId,
+        uint16 minimumRequestConfirmations,
+        uint32 callbackGasLimit,
+        uint32 numWords,
+        address indexed sender
+    );
 
     function setUp() public {
         vrfCoordinatorV2Mock = new VRFCoordinatorV2Mock(10, 10);
@@ -67,6 +77,30 @@ contract VRFConsumerTest is Test {
         vm.expectRevert("Ownable: caller is not the owner");
         vm.prank(address(0));
         vrfConsumer.setNumber(1337);
+    }
+
+    function testCanRequestRandomness() public {
+        // vm.expectEmit parameter : checks or not, in order: topic 1, topic 2, topic 3, data
+        // here we do not check data because preSeed is unknown, it is computed by the VRFCoordinator
+        vm.expectEmit(true, true, true, false);
+        bytes32 keyHash = 0x4b09e658ed251bcafeebbc69400383d49f344ace09b9576fe248bb02c003fe9f;
+        uint256 requestId = vrfConsumer.triggerSetRandomNumberViaVRF();
+        uint256 preSeed = 0; // unknown before call to VRFCoordinator
+        uint64 subId = 1;
+        uint16 requestConfirmations = 3;
+        uint32 callbackGasLimit = 500000;
+        uint32 numWords = 1;
+        address sender = address(vrfConsumer); // the VRFconsumer calls the VRFcoordinator
+        emit RandomWordsRequested(
+            keyHash, // indexed (topic 1)
+            requestId,
+            preSeed,
+            subId, // indexed (topic 2)
+            requestConfirmations,
+            callbackGasLimit,
+            numWords,
+            sender // indexed (topic 3)
+        );
     }
 
     function testCanGetVRFResponse() public {
