@@ -1,22 +1,22 @@
 ## RUN SCRIPTS
-function deploy {
+function VRFdeploy {
     forge script script/VRFConsumer.s.sol:Deploy --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_KEY -vvvv
 }
 
-function setNumber {
+function VRFsetNumber {
     forge script script/VRFConsumer.s.sol:SetNumber --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_KEY -vvvv
 }
 
-function setRandomNumber {
+function VRFsetRandomNumber {
     forge script script/VRFConsumer.s.sol:SetRandomNumber --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_KEY -vvvv
 }
 
-function getNumber {
+function VRFgetNumber {
     forge script script/VRFConsumer.s.sol:GetNumber --rpc-url $RPC_URL  --private-key $PRIVATE_KEY --broadcast --verify --etherscan-api-key $ETHERSCAN_KEY -vvvv
 }
 
 ## RUN TESTS
-function test {
+function VRFtest {
     forge test --match-contract VRF*
 }
 
