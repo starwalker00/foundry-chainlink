@@ -65,3 +65,6 @@ https://soliditytips.com/articles/solidity-dates-time-operations/
 
 OpenZeppelin utils including data types :
 https://docs.openzeppelin.com/contracts/3.x/api/utils
+
+Foundry cheatcodes :
+https://book.getfoundry.sh/cheatcodes/
