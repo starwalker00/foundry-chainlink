@@ -59,3 +59,9 @@ https://mumbai.polygonscan.com/tx/0x65651dd80d754980cc06264b66cd771dff31eab5cda3
 
 Register CRON job :
 https://mumbai.polygonscan.com/tx/0x64b82e5dde15194e716d77d9f73e21471f9ecee9dfa649676abf6afcfd84376d
+
+solidity dates :
+https://soliditytips.com/articles/solidity-dates-time-operations/
+
+OpenZeppelin utils including data types :
+https://docs.openzeppelin.com/contracts/3.x/api/utils
